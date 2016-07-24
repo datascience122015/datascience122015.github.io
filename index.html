@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Datascience122015.GitHub.io : coursera data product project">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Datascience122015.GitHub.io</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/datascience122015">View on GitHub</a>
+
+          <h1 id="project_title">Datascience122015.GitHub.io</h1>
+          <h2 id="project_tagline">coursera data product project</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="datascience122015githubio" class="anchor" href="#datascience122015githubio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>datascience122015.github.io</h1>
+
+<hr>
+
+<p>title       : Shiny Application and Reproducible Pitch
+subtitle    : Data Product - Coursera Project
+author      : Suparna Sen
+transition  : rotate
+framework   : io2012 # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow
+widgets     : [mathjax, bootstrap, shiny, interactive] # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft, selfcontained}
+knit        : slidify::knit2slides</p>
+
+<hr>
+
+<h1></h1>
+
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+
+<p>The application is built in the context of the course Developing <strong>Data Products</strong> of the Coursera Data Science Specialization.</p>
+
+<h2>
+<a id="application--body-mass-index" class="anchor" href="#application--body-mass-index" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Application : BODY MASS INDEX</h2>
+
+<ul>
+<li>The app developed for the first part of the assignment is available at:</li>
+</ul>
+
+<p><a href="https://suparnasen.shinyapps.io/DataProductProjectApp/">https://suparnasen.shinyapps.io/DataProductProjectApp/</a> </p>
+
+<ul>
+<li>Source code for ui.R and server.R files are available at:</li>
+</ul>
+
+<p><a href="https://github.com/datascience122015/ShinyApp">https://github.com/datascience122015/ShinyApp</a></p>
+
+<hr>
+
+<h1></h1>
+
+<h1>
+<a id="understanding-bmi" class="anchor" href="#understanding-bmi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Understanding BMI</h1>
+
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">slidifyLibraries</span>)</pre></div>
+
+<p>The body mass index (BMI) is a statistic developed by Adolphe Quetelet in the 1900's for evaluating body mass. It is not related to gender and age. It uses the same formula for men as for women and children.</p>
+
+<p>The body mass index is calculated based on the following formula:</p>
+
+<p>Bodyweight in kilograms divided by height in meters squared</p>
+
+<p>$$BMI = \frac{x KG}{y Meter *  y Meter}`$$</p>
+
+<p>Where:
+x=bodyweight in KG
+y=height in m</p>
+
+<p>The result is in kilograms by meters squared, or KG/M2. In most cases, people simply leave out this designation. It doesn't have any real significance because humans don't equate to real mathematical squares as the formula might suggest.</p>
+
+<hr>
+
+<h1></h1>
+
+<h1>
+<a id="functionality---" class="anchor" href="#functionality---" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Functionality   </h1>
+
+<p><strong>Inputs</strong> to the System:</p>
+
+<ol>
+<li>User Name</li>
+<li>Age</li>
+<li>Height</li>
+<li>Weight</li>
+</ol>
+
+<p><strong>Expected output</strong> from the System:</p>
+
+<ol>
+<li>Calculated BMI</li>
+<li>System registered input data </li>
+<li>Recommendation from the system</li>
+</ol>
+
+<hr>
+
+<h1></h1>
+
+<h1>
+<a id="technical-details" class="anchor" href="#technical-details" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Technical Details</h1>
+
+<p>The application is fully contained in the files <strong>server.R and ui.R</strong>, and the user input widgets are monitored for changes.</p>
+
+<p>Once a change is detected, a segment of code is executed, making the calculations requested, and the screen is updated.</p>
+
+<p>To show information to the user there's two sections available. The first one will always show the date the user has inserted, and the second one will show the results of the calculations made.</p>
+
+<hr>
+
+<h1></h1>
+
+<h1>
+<a id="shiny-app" class="anchor" href="#shiny-app" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Shiny App</h1>
+
+<div class="highlight highlight-source-r"><pre>library(<span class="pl-smi">shiny</span>)
+inputPanel(textInput(<span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Name:<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Hello!!!<span class="pl-pds">"</span></span>),
+numericInput(<span class="pl-s"><span class="pl-pds">"</span>age<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Age (greater than 18):<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>19<span class="pl-pds">"</span></span>,<span class="pl-v">min</span><span class="pl-k">=</span> <span class="pl-c1">19</span>,<span class="pl-v">max</span> <span class="pl-k">=</span> <span class="pl-c1">95</span>,<span class="pl-v">step</span><span class="pl-k">=</span><span class="pl-c1">1</span>),
+radioButtons(<span class="pl-s"><span class="pl-pds">"</span>sex<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Gender:<span class="pl-pds">"</span></span>, c(<span class="pl-s"><span class="pl-pds">"</span>Male<span class="pl-pds">"</span></span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>male<span class="pl-pds">"</span></span>,<span class="pl-s"><span class="pl-pds">"</span>Female<span class="pl-pds">"</span></span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>female<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Neutral<span class="pl-pds">"</span></span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>neutral<span class="pl-pds">"</span></span>   ) ),
+sliderInput(<span class="pl-s"><span class="pl-pds">"</span>height<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Height in centimeter<span class="pl-pds">"</span></span>, <span class="pl-v">value</span> <span class="pl-k">=</span> <span class="pl-c1">150</span>,<span class="pl-v">min</span> <span class="pl-k">=</span> <span class="pl-c1">150</span>,    <span class="pl-v">max</span> <span class="pl-k">=</span> <span class="pl-c1">250</span>), 
+sliderInput(<span class="pl-s"><span class="pl-pds">"</span>weight<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Body Weight in Kilogram<span class="pl-pds">"</span></span>,  <span class="pl-v">value</span> <span class="pl-k">=</span> <span class="pl-c1">50</span>,<span class="pl-v">min</span> <span class="pl-k">=</span> <span class="pl-c1">50</span>, <span class="pl-v">max</span> <span class="pl-k">=</span> <span class="pl-c1">200</span>)   )
+</pre></div>
+
+<hr>
+
+<h1></h1>
+
+<h1>
+<a id="thank-you" class="anchor" href="#thank-you" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>THANK YOU</h1>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
